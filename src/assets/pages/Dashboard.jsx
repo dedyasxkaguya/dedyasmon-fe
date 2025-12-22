@@ -1,18 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Buttons from '../components/Buttons'
 import Profil from './Profil'
+import Aos from 'aos'
 
 const Dashboard = () => {
     const { id } = useParams()
+    useEffect(()=>{
+        Aos.init({
+            duration:1000
+        })
+    },[])
     return (
         <>
             <Navbar />
-            <main className='flex'>
+            <main className='flex' data-aos="fade-up">
                 <div className="sideBar p-4 bg-neutral-800 h-dvh w-[24dvh] text-neutral-50 font-['Raleway'] flex flex-col justify-between">
                     <main>
-                        <p className='pb-8'>@Dedyasmon</p>
+                        <p className='pb-8'>@Dedyasmon {id}</p>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Dashboard</span>
                             <Buttons title='Profil' icon='person-fill' link='' />
