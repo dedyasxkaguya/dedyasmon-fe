@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+body {
+    max-width: 100dvw;
+    overflow-x: hidden;
+    min-height: 300dvh;
+}
+
+
+.profile-image{
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+@media (min-width:1080px) {
+    
+    #nav {
+        display: none;
+    }
+
+}
+
