@@ -1,15 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Buttons from '../components/Buttons'
 import Profil from './Profil'
 import Aos from 'aos'
+import axios from 'axios'
 
-const Dashboard = () => {
+const Dashboard0 = () => {
     const { id } = useParams()
+    const [user,setUser] = useState()
     useEffect(()=>{
         Aos.init({
             duration:1000
+        })
+        axios.get(`http://127.0.0.1:8000/api/user/${id}`)
+        .then(data=>{
+            const fetched = data.data
+            setUser(fetched)
         })
     },[])
     return (
@@ -21,7 +28,7 @@ const Dashboard = () => {
                         <p className='pb-8'>@Dedyasmon {id}</p>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Dashboard</span>
-                            <Buttons title='Profil' icon='person-fill' link='' />
+                            <Buttons title='Profil' icon='person-fill' link='/home' />
                             <Buttons title='Projek' icon='list-task' link='' />
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
@@ -49,14 +56,13 @@ const Dashboard = () => {
                     <div className="p-4 rounded-2xl bg-neutral-50 text-neutral-900">
                         {/* <p className='font-semibold text-lg truncate'>Name</p>
                     <span className='font-light text-xs'>NIS</span> */}
-                        <p className='font-semibold text-lg truncate'>Dedy Anang Setiawan blablabla</p>
-                        <span className='font-light text-xs'>202523180</span>
+                        <p className='font-semibold text-lg truncate'>{user?.name}</p>
+                        <span className='font-light text-xs'>{user?.role}</span>
                     </div>
                 </div>
-                <Profil />
             </main>
         </>
     )
 }
 
-export default Dashboard
+export default Dashboard0

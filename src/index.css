@@ -3,7 +3,7 @@
 body {
     max-width: 100dvw;
     overflow-x: hidden;
-    min-height: 300dvh;
+    /* min-height: 300dvh; */
 }
 
 
@@ -12,11 +12,33 @@ body {
     aspect-ratio: 1/1;
 }
 
-@media (min-width:1080px) {
+.modaldiv{
+    max-height: 60dvh;
+}
+
+.modaldiv-content{
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 50dvh;
+}
+.circleid{
+    height: 1.6rem;
+    width: auto;
+    aspect-ratio: 1/1;
+}
+
+@media (min-width:10px) {
     
     #nav {
         display: none;
     }
 
 }
-
+@media (max-width:864px){
+    .specialFlex{
+        flex-direction: column;
+    }
+    .modaldiv{
+        width: 100% !important;
+    }
+}

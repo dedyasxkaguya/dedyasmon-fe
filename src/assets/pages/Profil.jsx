@@ -30,7 +30,7 @@ const Profil = () => {
         }, 1000);
     }, [])
     let name = user?.name[0] + user?.name[1]
-    if (user?.role == 'USER') {
+    if (user?.role == 'USER' || user?.role == 'ADMIN') {
         return (
             <main className='bg-neutral-50 w-dvw p-8 font-["Raleway"] ' data-aos="fade-up">
                 <div className="border bg-neutral-100 border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
@@ -42,7 +42,7 @@ const Profil = () => {
                             {user?.name}
                         </span>
                         <span className='text-md font-light mb-4'>
-                            Role : User
+                            Role : {user?.role}
                         </span>
                     </div>
                 </div>
@@ -82,9 +82,9 @@ const Profil = () => {
                             </div>
                             <div className="rounded-xl border border-neutral-400 flex flex-col overflow-hidden"
                                 data-aos='fade-up'>
-                                <Biodata param='Tempat Lahir' value='Ponorogo' />
-                                <Biodata param='Tempat Lahir' value='Ponorogo' />
-                                <Biodata param='Tempat Lahir' value='Ponorogo' last={true} />
+                                <Biodata param='Gender' value={siswa?.gender} />
+                                <Biodata param='Asal Sekolah' value={siswa?.asal_sekolah} />
+                                <Biodata param='NISN' value={siswa?.nisn} last={true} />
                             </div>
                         </div>
                     </div>
