@@ -1,14 +1,20 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const Teachers = () => {
     const [guru, setGuru] = useState([])
+    const { id } = useParams()
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/api/teachers')
-            .then(data => {
-                const fetched = data.data
-                setGuru(fetched)
-            })
+        setTimeout(() => {
+            axios.get('http://127.0.0.1:8000/api/teachers')
+                .then(data => {
+                    const fetched = data.data
+                    setGuru(fetched)
+                })
+        }, 1000);
     }, [])
     return (
         <div className="p-2 rounded-2xl border w-[40dvw] modaldiv">
@@ -21,9 +27,9 @@ const Teachers = () => {
                                 <div className='bg-neutral-800 rounded-full text-white circleid text-center'>
                                     {s.id}
                                 </div>
-                                <span className='mx-2'>{s.name}</span>
+                                <Link to={ `/${id}/teacher/${s.id}` } className='mx-2 duration-300 hover:underline'>{s.name}</Link>
                             </div>
-                            <div className="bg-neutral-800 p-2 w-50 text-white rounded-xl"> 
+                            <div className="bg-neutral-800 p-2 w-50 text-white rounded-xl">
                                 <span>{s.subject}</span>
                             </div>
                         </div>

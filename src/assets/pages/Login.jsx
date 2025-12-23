@@ -3,6 +3,7 @@ import Input from '../components/Input'
 import bgrpl from '../../../public/bgrpl.jpg'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
 
@@ -37,7 +38,7 @@ const Login = () => {
                         showConfirmButton:false
                     })
                     setTimeout(() => {
-                        location.href=`/home/${fetched.user.slug}`
+                        location.href=`/${fetched.user.slug}/home`
                     }, 2000);
                     
                     return
@@ -64,7 +65,7 @@ const Login = () => {
                 <img src={bgrpl} alt="" className='h-dvh opacity-5 object-cover absolute' />
             </div>
             <div id="right" className='h-dvh w-[40dvw] bg-blue-100 flex flex-col justify-center items-center z-10'>
-                <form className="flex border rounded-3xl p-4 flex-col gap-2 bg-blue-800 text-neutral-50">
+                <form className="flex border rounded-3xl p-4 flex-col gap-2 bg-blue-950 text-neutral-50 w-80">
                     <span className='text-xl font-semibold'>Login</span>
                     <span className='text-sm font-light'>Welcome back to dedyasmon</span>
                     <br />
@@ -72,6 +73,7 @@ const Login = () => {
                         {/* <Input id='name' type="text" name='Username' /> */}
                         <Input id='email' type="email" name='Email' />
                         <Input id='password' type="password" name='Password' />
+                        <Link to={'/register'} className='text-sm underline'>New?register now</Link>
                         <button type="button" id='btn'
                             className='p-2 rounded-xl border duration-500 border-neutral-50 hover:bg-neutral-50 hover:text-neutral-800' 
                             onClick={() => handleLogin()}>

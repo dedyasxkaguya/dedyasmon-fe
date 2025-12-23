@@ -1,17 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Buttons from '../components/Buttons'
 import Profil from './Profil'
 import Aos from 'aos'
+import Gallery from './Gallery'
+import axios from 'axios'
 
 const Dashboard = () => {
     const { id } = useParams()
-    useEffect(()=>{
+    const [user, setUser] = useState()
+    useEffect(() => {
         Aos.init({
-            duration:1000
+            duration: 1000
         })
-    },[])
+        axios.get(`http://127.0.0.1:8000/api/user/${id}`)
+            .then(data => {
+                const fetched = data.data
+                setUser(fetched)
+            })
+    }, [])
+    let isSiswa
+    if (user?.role !== 'SISWA') {
+        isSiswa = 'none'
+    }
     return (
         <>
             <Navbar />
@@ -24,36 +36,30 @@ const Dashboard = () => {
                             <Buttons title='Profil' icon='person-fill' link='' />
                             <Buttons title='Projek' icon='list-task' link='' />
                         </div>
-                        <div className='flex flex-col gap-2 my-4'>
+                        <div className='flex flex-col gap-2 my-4' style={{ display: isSiswa }}>
                             <span className="font-extralight text-sm">Informasi Kelas</span>
-                            {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
-                        Pelajaran <i className="bi bi-person mx-2"></i>
-                        </Link> */}
                             <Buttons title='Pelajaran' icon='bookmark' link='' />
-                            {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
-                        Kelas <i className="bi bi-clipboard mx-2"></i>
-                    </Link> */}
                             <Buttons title='Kelas' icon='backpack2' link='/teachers' />
-                            {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
-                        Galeri <i className="bi bi-clipboard mx-2"></i>
-                        </Link> */}
                             <Buttons title='Galeri' icon='images' link='' />
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Service Support</span>
                             <Buttons title='Author' icon='github' link='' />
                             <Buttons title='Feedback' icon='chat-left' link='' />
-                            {/* <Buttons title='Feedback' icon='chat-left' link='' /> */}
                         </div>
                     </main>
-                    <div className="p-4 rounded-2xl bg-neutral-50 text-neutral-900">
-                        {/* <p className='font-semibold text-lg truncate'>Name</p>
-                    <span className='font-light text-xs'>NIS</span> */}
-                        <p className='font-semibold text-lg truncate'>Dedy Anang Setiawan blablabla</p>
-                        <span className='font-light text-xs'>202523180</span>
+                    <div className="p-2 rounded-xl bg-neutral-50 text-neutral-900">
+                        <p className='font-semibold text-lg truncate'>{user?.name}</p>
+                        <span className='font-light text-xs'>{user?.role}</span>
                     </div>
                 </div>
-                <Profil />
+                <div className="flex flex-col">
+
+                    <Profil />
+                    <Gallery />
+                    {/* <ShowGallery /> */}
+
+                </div>
             </main>
         </>
     )

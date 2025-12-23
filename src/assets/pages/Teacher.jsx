@@ -12,14 +12,6 @@ const Teacher = () => {
                 const fetched = data.data
                 console.log(fetched)
             })
-        // setTimeout(() => {
-        //     axios.get('http://127.0.0.1:8000/api/students/min')
-        //         .then(data => {
-        //             const fetched = data.data
-        //             console.log(fetched)
-        //             setSiswa(fetched)
-        //         })
-        // }, 1000);
     }, [])
     return (
         <>

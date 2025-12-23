@@ -3,6 +3,7 @@
 body {
     max-width: 100dvw;
     overflow-x: hidden;
+    font-family: "Raleway";
     /* min-height: 300dvh; */
 }
 
@@ -26,7 +27,14 @@ body {
     width: auto;
     aspect-ratio: 1/1;
 }
-
+.gallery{
+    grid-template-columns: repeat(4,1fr);
+}
+.gallery img{
+    /* width: 18dvw; */
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
 @media (min-width:10px) {
     
     #nav {
@@ -34,7 +42,7 @@ body {
     }
 
 }
-@media (max-width:864px){
+@media (max-width:1080px){
     .specialFlex{
         flex-direction: column;
     }

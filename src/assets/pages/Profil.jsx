@@ -32,8 +32,8 @@ const Profil = () => {
     let name = user?.name[0] + user?.name[1]
     if (user?.role == 'USER' || user?.role == 'ADMIN') {
         return (
-            <main className='bg-neutral-50 w-dvw p-8 font-["Raleway"] ' data-aos="fade-up">
-                <div className="border bg-neutral-100 border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
+            <main className='w-[80dvw] font-["Raleway"] p-8' data-aos="fade-up">
+                <div className="bg-neutral-100 shadow-sm p-4 rounded-4xl flex gap-4 items-center">
                     <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 text-4xl">
                         {name.toUpperCase()}
                     </div>
@@ -41,8 +41,11 @@ const Profil = () => {
                         <span className='text-2xl font-semibold capitalize'>
                             {user?.name}
                         </span>
-                        <span className='text-md font-light mb-4'>
+                        <span className='text-md font-light'>
                             Role : {user?.role}
+                        </span>
+                        <span className='text-md font-light'>
+                            Email : {user?.email}
                         </span>
                     </div>
                 </div>
@@ -51,8 +54,8 @@ const Profil = () => {
     } else {
         return (
             <>
-                <main className='bg-neutral-50 w-dvw p-8 font-["Raleway"] ' data-aos="fade-up">
-                    <div className="border bg-neutral-100 border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
+                <main className='w-[80dvw] p-8 font-["Raleway"] ' data-aos="fade-up">
+                    <div className="border border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
                         <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 text-4xl">
                             {name}
                         </div>
