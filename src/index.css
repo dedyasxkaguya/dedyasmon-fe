@@ -4,7 +4,9 @@ body {
     max-width: 100dvw;
     overflow-x: hidden;
     font-family: "Raleway";
-    /* min-height: 300dvh; */
+    min-height: 144dvh;
+    padding-left: 24dvh;
+    /* padding-bottom: 48dvh; */
 }
 
 

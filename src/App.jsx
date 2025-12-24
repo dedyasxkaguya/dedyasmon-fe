@@ -7,6 +7,7 @@ import Register from './assets/pages/Register'
 import Login from './assets/pages/Login'
 import Teacher from './assets/pages/Teacher'
 import TeacherDetail from './assets/pages/TeacherDetail'
+import Subjects from './assets/pages/Subjects'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
       {/* <Route path='/login' element={<Login/>}></Route> */}
       <Route path='/:id/teachers' element={<Teacher/>}></Route>
       <Route path='/:id/teacher/:teacher' element={<TeacherDetail/>}></Route>
+      <Route path='/:id/subjects' element={<Subjects/>}></Route>
     </Routes>
     </>
   )

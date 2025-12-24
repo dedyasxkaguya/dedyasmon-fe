@@ -22,7 +22,7 @@ const Dashboard0 = () => {
     return (
         <>
             <Navbar />
-            <main className='flex' data-aos="fade-up">
+            <main className='flex fixed left-0 bottom-0' data-aos="fade-up">
                 <div className="sideBar p-4 bg-neutral-800 h-dvh w-[24dvh] text-neutral-50 font-['Raleway'] flex flex-col justify-between">
                     <main>
                         <p className='pb-8'>@Dedyasmon {id}</p>
@@ -36,7 +36,7 @@ const Dashboard0 = () => {
                             {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
                         Pelajaran <i className="bi bi-person mx-2"></i>
                         </Link> */}
-                            <Buttons title='Pelajaran' icon='bookmark' link='' />
+                            <Buttons title='Pelajaran' icon='bookmark' link='/subjects' />
                             {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
                         Kelas <i className="bi bi-clipboard mx-2"></i>
                     </Link> */}

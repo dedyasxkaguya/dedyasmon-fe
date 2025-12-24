@@ -46,7 +46,7 @@ const Register = () => {
 
     return (
         <main className='h-dvh flex font-["Raleway"] flex-row-reverse'>
-            <div id="left" className='h-dvh w-[60dvw] bg-blue-950 flex justify-center items-center'>
+            <div id="left" className='h-dvh w-[60dvw] bg-blue-950 flex justify-center items-center fixed'>
                 <div className="flex flex-col text-neutral-50">
                     {/* <img src={logorpl} alt="" /> */}
                     <span className='text-9xl font-semibold'>X-RPL</span>
@@ -56,7 +56,7 @@ const Register = () => {
 
                 <img src={bgrpl} alt="" className='h-dvh opacity-5 object-cover absolute' />
             </div>
-            <div id="right" className='h-dvh w-[40dvw] bg-blue-100 flex flex-col justify-center items-center z-10'>
+            <div id="right" className='h-dvh w-[40dvw] bg-blue-100 flex flex-col justify-center items-center z-10 fixed left-0'>
                 <form className="flex border rounded-3xl p-4 flex-col gap-2 bg-blue-950 text-neutral-50">
                     <span className='text-xl font-semibold'>Register</span>
                     <span className='text-sm font-light'>You need an account to access Dedyasmon</span>
