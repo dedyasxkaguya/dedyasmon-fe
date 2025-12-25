@@ -33,24 +33,14 @@ const Dashboard0 = () => {
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Informasi Kelas</span>
-                            {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
-                        Pelajaran <i className="bi bi-person mx-2"></i>
-                        </Link> */}
                             <Buttons title='Pelajaran' icon='bookmark' link='/subjects' />
-                            {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
-                        Kelas <i className="bi bi-clipboard mx-2"></i>
-                    </Link> */}
                             <Buttons title='Kelas' icon='backpack2' link='/teachers' />
-                            {/* <Link to={''} className='duration-500 font-light text-lg rounded-xl p-2 hover:bg-neutral-50 hover:text-neutral-800'>
-                        Galeri <i className="bi bi-clipboard mx-2"></i>
-                        </Link> */}
-                            <Buttons title='Galeri' icon='images' link='' />
+                            <Buttons title='Galeri' icon='images' link='/gallery' />
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Service Support</span>
                             <Buttons title='Author' icon='github' link='' />
                             <Buttons title='Feedback' icon='chat-left' link='' />
-                            {/* <Buttons title='Feedback' icon='chat-left' link='' /> */}
                         </div>
                     </main>
                     <div className="p-4 rounded-2xl bg-neutral-50 text-neutral-900">

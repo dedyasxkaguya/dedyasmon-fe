@@ -40,7 +40,7 @@ const Dashboard = () => {
                             <span className="font-extralight text-sm">Informasi Kelas</span>
                             <Buttons title='Pelajaran' icon='bookmark' link='' />
                             <Buttons title='Kelas' icon='backpack2' link='/teachers' />
-                            <Buttons title='Galeri' icon='images' link='' />
+                            <Buttons title='Galeri' icon='images' link='/gallery' />
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Service Support</span>

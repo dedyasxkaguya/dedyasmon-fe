@@ -29,7 +29,7 @@ const TeacherComment = () => {
   const handleSubmit = () => {
     const formData = new FormData();
 
-    const name = user?.name
+    const name = user?.username
     const teacher_id = teacherID.id
     const comment = document.getElementById('text')
     const rating = parseFloat(document.getElementById('rating').value)
@@ -103,7 +103,11 @@ const TeacherComment = () => {
         {comments.map((c) => {
           return (
             <div className="rounded-xl shadow p-2">
-              <p className='text-neutral-400'>@{c.username} | <span className='text-yellow-400'>{'★'.repeat(c.rating)}</span></p>
+              <p className='text-neutral-400'>@{c.username} | 
+                <span className='text-yellow-400'>{'★'.repeat(c.rating)}</span>
+                <span className='text-yellow-400'>{'☆'.repeat(5 - (c.rating))}
+</span>
+                </p>
               <span>{c.text}</span>
             </div>
           )
