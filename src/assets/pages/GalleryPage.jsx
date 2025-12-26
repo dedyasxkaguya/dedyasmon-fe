@@ -4,7 +4,7 @@ import Gallery from './Gallery'
 
 const GalleryPage = () => {
   return (
-    <main className="flex">
+    <main className="flex justify-center">
         <Dashboard0 />
         <Gallery/>
     </main>

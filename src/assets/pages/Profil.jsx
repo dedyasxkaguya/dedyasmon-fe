@@ -32,7 +32,7 @@ const Profil = () => {
     let name = user?.name[0] + user?.name[1]
     if (user?.role == 'USER' || user?.role == 'ADMIN') {
         return (
-            <main className='w-[80dvw] font-["Raleway"] p-8' data-aos="fade-up">
+            <main className='w-[80dvw] font-["Raleway"] p-2' data-aos="fade-up">
                 <div className="bg-neutral-100 shadow-sm p-4 rounded-4xl flex gap-4 items-center">
                     <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 text-4xl">
                         {name.toUpperCase()}
@@ -54,7 +54,7 @@ const Profil = () => {
     } else {
         return (
             <>
-                <main className='w-[80dvw] p-8 font-["Raleway"] ' data-aos="fade-up">
+                <main className='w-[80dvw] p-2 font-["Raleway"] ' data-aos="fade-up">
                     <div className="border border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
                         <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 text-4xl">
                             {name}

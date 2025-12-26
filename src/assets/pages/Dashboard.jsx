@@ -6,6 +6,7 @@ import Profil from './Profil'
 import Aos from 'aos'
 import Gallery from './Gallery'
 import axios from 'axios'
+import GalleryMinimalist from '../components/GalleryMinimalist'
 
 const Dashboard = () => {
     const { id } = useParams()
@@ -28,13 +29,13 @@ const Dashboard = () => {
         <>
             <Navbar />
             <main className='flex' data-aos="fade-up">
-                <div className="sideBar p-4 bg-neutral-800 h-dvh w-[24dvh] text-neutral-50 font-['Raleway'] flex flex-col justify-between fixed left-0 bottom-0">
+                <div className="sideBar p-4 bg-neutral-800 h-dvh dashboard text-neutral-50 font-['Raleway'] flex flex-col justify-between fixed left-0 bottom-0">
                     <main>
-                        <p className='pb-8'>@Dedyasmon {id}</p>
+                        {/* <p className='pb-8'>@Dedyasmon {id}</p> */}
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Dashboard</span>
                             <Buttons title='Profil' icon='person-fill' link='' />
-                            <Buttons title='Projek' icon='list-task' link='' />
+                            <Buttons title='Projek' icon='list-task' link='/projects' />
                         </div>
                         <div className='flex flex-col gap-2 my-4' style={{ display: isSiswa }}>
                             <span className="font-extralight text-sm">Informasi Kelas</span>
@@ -56,7 +57,7 @@ const Dashboard = () => {
                 <div className="flex flex-col">
 
                     <Profil />
-                    <Gallery />
+                    <GalleryMinimalist />
                     {/* <ShowGallery /> */}
 
                 </div>

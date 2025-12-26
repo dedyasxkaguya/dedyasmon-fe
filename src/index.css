@@ -5,10 +5,12 @@ body {
     overflow-x: hidden;
     font-family: "Raleway";
     min-height: 144dvh;
-    padding-left: 24dvh;
-    /* padding-bottom: 48dvh; */
+    padding-left: 12dvw;
 }
 
+.dashboard {
+    max-width: 12dvw;
+}
 
 .profile-image {
     height: auto;
@@ -23,6 +25,7 @@ body {
     overflow: scroll;
     overflow-x: hidden;
     max-height: 50dvh;
+    scrollbar-width: none;
 }
 
 .circleid {
@@ -69,23 +72,62 @@ body {
     width: auto;
 }
 
+.projectImgBox {
+    min-width: 10%;
+    max-width: 10%;
+}
+
+.projectIconImg {
+    aspect-ratio: 1/1 !important;
+    object-fit: contain;
+    height: 100%;
+    width: auto;
+}
+
 @media (min-width:10px) {
 
     #nav {
         display: none;
     }
 
+    /* .dashboard {
+        max-width: 16dvw;
+    } */
+}
+
+@media (max-width:1080px) {
+    .specialFlex {
+        /* padding-left: 10dvw; */
+        flex-direction: column;
+    }
+
+    .specialFlex .notdiv {
+        width: auto;
+    }
+
 }
 
 @media (max-width:720px) {
+    body {
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dashboard {
+        display: none;
+        max-width: fit-content;
+    }
+
     .modalGallery img {
         height: auto;
         max-width: 90dvw;
     }
-    .modalGallery{
+
+    .modalGallery {
         max-width: 64dvw;
     }
-    
+
     .modalGalleryAddImg {
         height: auto;
         max-width: 64dvw !important;
@@ -96,6 +138,13 @@ body {
     }
 
     .modaldiv {
-        width: 100% !important;
+        /* width: 80dvw !important; */
+        width: fit-content !important;
+        max-width: 80dvw;
+    }
+
+    .projectImgBox {
+        min-width: 20%;
+        max-width: 20%;
     }
 }

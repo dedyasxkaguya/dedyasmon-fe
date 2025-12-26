@@ -7,7 +7,7 @@ const Subjects = () => {
   return (
     <div className='flex'>
         <Dashboard0 />
-        <main className='p-8 flex gap-4'>
+        <main className='p-2 flex gap-4 specialFlex'>
             <LeaderboardGuru />
             <Schedule />
         </main>
