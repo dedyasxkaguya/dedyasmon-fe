@@ -25,20 +25,25 @@ const Register = () => {
         formData.append('name', nameElem.value)
         formData.append('email', emailElem.value)
         formData.append('password', passwordElem.value)
+        Swal.fire({
+            title: "Wait A second",
+            text: 'Fetching API database',
+            showConfirmButton: false
+        })
 
         axios.post('http://127.0.0.1:8000/api/user/register', formData)
             .then(data => {
                 const fetched = data.data
                 console.log(fetched)
-                if(fetched.status){
+                if (fetched.status) {
                     Swal.fire({
-                        icon:'success',
-                        title:'Berhasil',
-                        text:'Mengarahkan ke home dalam 2 detik',
-                        showConfirmButton:false
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Mengarahkan ke home dalam 2 detik',
+                        showConfirmButton: false
                     })
                     setTimeout(() => {
-                        location.href=`/${fetched.data.slug}/home`
+                        location.href = `/${fetched.data.slug}/home`
                     }, 2000);
                 }
             })
@@ -46,7 +51,7 @@ const Register = () => {
 
     return (
         <main className='h-dvh flex font-["Raleway"] flex-row-reverse'>
-            <div id="left" className='h-dvh w-[60dvw] bg-blue-950 flex justify-center items-center fixed'>
+            <div id="left0" className='h-dvh w-[60dvw] bg-blue-950 flex justify-center items-center fixed'>
                 <div className="flex flex-col text-neutral-50">
                     {/* <img src={logorpl} alt="" /> */}
                     <span className='text-9xl font-semibold'>X-RPL</span>
@@ -56,7 +61,7 @@ const Register = () => {
 
                 <img src={bgrpl} alt="" className='h-dvh opacity-5 object-cover absolute' />
             </div>
-            <div id="right" className='h-dvh w-[40dvw] bg-blue-100 flex flex-col justify-center items-center z-10 fixed left-0'>
+            <div id="right0" className='h-dvh w-[40dvw] bg-blue-100 flex flex-col justify-center items-center z-10 fixed left-0'>
                 <form className="flex border rounded-3xl p-4 flex-col gap-2 bg-blue-950 text-neutral-50">
                     <span className='text-xl font-semibold'>Register</span>
                     <span className='text-sm font-light'>You need an account to access Dedyasmon</span>
@@ -72,6 +77,8 @@ const Register = () => {
                         </button>
                     </div>
                 </form>
+                <img src={bgrpl} alt="" id='leftimg' className='fixed -bottom-15 -z-10 opacity-5' />
+                <div className="w-[160dvw] h-[120dvw] bg-blue-950 rounded-[100%] -z-20 fixed -bottom-75 opacity-80"></div>
             </div>
         </main>
     )

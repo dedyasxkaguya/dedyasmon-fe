@@ -1,6 +1,7 @@
 import React from 'react'
 import Input from '../components/Input'
 import bgrpl from '../../../public/bgrpl.jpg'
+// import logorpl from '../../../public/rpl.jpg'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
@@ -25,29 +26,33 @@ const Login = () => {
         // formData.append('name', nameElem.value)
         formData.append('email', emailElem.value)
         formData.append('password', passwordElem.value)
-
+        Swal.fire({
+            title: "Wait A second",
+            text: 'Fetching API database',
+            showConfirmButton: false
+        })
         axios.post('http://127.0.0.1:8000/api/user/login', formData)
             .then(data => {
                 const fetched = data.data
                 console.log(fetched)
-                if(fetched.status){
+                if (fetched.status) {
                     Swal.fire({
-                        icon:'success',
-                        title:'Berhasil',
-                        text:'Mengarahkan ke home dalam 2 detik',
-                        showConfirmButton:false
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: 'Mengarahkan ke home dalam 2 detik',
+                        showConfirmButton: false
                     })
                     setTimeout(() => {
-                        location.href=`/${fetched.user.slug}/home`
+                        location.href = `/${fetched.user.slug}/home`
                     }, 2000);
-                    
+
                     return
-                }else{
+                } else {
                     Swal.fire({
-                        icon:'error',
-                        title:'Gagal',
-                        text:fetched.text,
-                        confirmButtonText:'Try again'
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: fetched.text,
+                        confirmButtonText: 'Try again'
                     })
                 }
             })
@@ -75,12 +80,14 @@ const Login = () => {
                         <Input id='password' type="password" name='Password' />
                         <Link to={'/register'} className='text-sm underline'>New?register now</Link>
                         <button type="button" id='btn'
-                            className='p-2 rounded-xl border duration-500 border-neutral-50 hover:bg-neutral-50 hover:text-neutral-800' 
+                            className='p-2 rounded-xl border duration-500 border-neutral-50 hover:bg-neutral-50 hover:text-neutral-800'
                             onClick={() => handleLogin()}>
                             Login
                         </button>
                     </div>
                 </form>
+                <img src={bgrpl} alt="" id='leftimg' className='fixed -bottom-10 -z-10 opacity-5' />
+                <div className="w-[160dvw] h-[120dvw] bg-blue-950 rounded-[100%] -z-20 fixed -bottom-70 opacity-80"></div>
             </div>
         </main>
     )

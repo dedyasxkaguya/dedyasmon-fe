@@ -40,12 +40,14 @@ const Projects = (props) => {
                 'repo': github_repo
             })
             console.log(github_link)
-            axios.get(github_link, {
-                headers: {
-                    'Authorization': `Bearer ${import.meta.env.VITE_API_URL}`,
-                    'Accept': 'application/json'
-                }
-            }).then(data => {
+            // axios.get(github_link, {
+            //     headers: {
+            //         'Authorization': `Bearer ${import.meta.env.VITE_API_URL}`,
+            //         'Accept': 'application/json'
+            //     }
+            // }).then(data => {
+            axios.get(github_link)
+            .then(data => {
                 const fetched = data.data
                 console.log(fetched)
                 const formData = new FormData()
@@ -77,7 +79,7 @@ const Projects = (props) => {
                     })
                 })
         }
-        
+
     }
     const handleDelete = (id) => {
         Swal.fire({
@@ -114,39 +116,45 @@ const Projects = (props) => {
     }
     return (
         <div className='modaldiv m-4 p-2 rounded-2xl shadow w-[40dvw]'>
-            <div className="text-2xl font-medium pb-2">{props.name}'s Projects</div>
+            <div className="lg:text-2xl font-medium pb-2 sm:text-sm">{props.name}'s Projects</div>
             <button type="button" onClick={() => handleShow()}
                 className='p-2 rounded-xl duration-500 border border-green-600 text-green-600 hover:bg-green-600 hover:text-white' >
                 Tambahkan Project
                 <i className="bi bi-plus mx-2"></i>
             </button>
             {project.map((a) => {
-                return(
-
+                return (
                     <div className="p-2 rounded-2xl shadow flex gap-2 notdiv flex-col">
-                    <div className="bg-black text-white p-2 rounded-lg">
-                        <span>@{a?.user?.username}'s {a?.data?.name}</span>
-                        <a className='p-1 bg-red-600 text-white rounded mx-2 hover:opacity-75' onClick={() => handleDelete(a?.id)}>
-                            Delete <i className='bi bi-trash  mx-2'></i></a>
-                    </div>
-                    <div className="flex notdiv gap-2">
-                        <div className="projectImgBox">
-                            <img src={a?.data?.owner?.avatar_url} alt="" className='projectIconImg aspect-square rounded-xl' />
+                        <div className="bg-black text-white p-2 rounded-lg gap-4 lg:flex-row sm:flex-col lg:items-center">
+                            <div>@{a?.user?.username}'s {a?.data?.name}</div>
+                            <button type='button' className='p-1 bg-red-600 text-white rounded hover:opacity-75' onClick={() => handleDelete(a?.id)}>
+                                Delete <i className='bi bi-trash mx-2'></i>
+                            </button>
                         </div>
-                        <div className="flex flex-col notdiv max-w-[60%]">
-                            <span className=''>
-                                <a href={a?.data?.owner?.html_url} className='duration-200 hover:underline'>
-                                    {a?.data?.owner?.login}
-                                </a>
-                                /{a?.data?.name}</span>
-                            <div className='flex items-center gap-2'>
-                                <span>Bahasa yang digunakan : {a?.data?.language} </span>
-                                <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${a?.data?.language?.toLowerCase()}/${a?.data?.language?.toLowerCase()}-original.svg`} alt="" className='w-6' />
+                        <div className="flex notdiv gap-2">
+                            <div className="projectImgBox">
+                                <img src={a?.data?.owner?.avatar_url} alt="" className='projectIconImg aspect-square rounded-xl' />
+                            </div>
+                            <div className="flex flex-col notdiv max-w-[60%]">
+                                <div>
+                                    <a href={a?.data?.owner?.html_url} className='duration-200 hover:underline '>
+                                        {a?.data?.owner?.login}
+                                    </a>
+                                    <span className=''>
+                                        /{a?.data?.name}
+                                    </span>
+                                </div>
+                                <div className='flex justify-center flex-col'>
+                                    <span>Language  :</span>
+                                    <div className='flex gap-2 items-center'>
+                                        <span>{a?.data?.language}</span>
+                                        <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${a?.data?.language?.toLowerCase()}/${a?.data?.language?.toLowerCase()}-original.svg`} alt="" className='w-6' />
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <span>{a?.data?.pushed_at?.split('T')[0]} at {a?.data?.pushed_at?.split('T')[1].split('Z')[0]}</span>
                     </div>
-                    <span>{a?.data?.pushed_at?.split('T')[0]} at {a?.data?.pushed_at?.split('T')[1].split('Z')[0]}</span>
-                </div>
                 )
             })}
             {show && (

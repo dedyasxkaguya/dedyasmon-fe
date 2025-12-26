@@ -27,7 +27,7 @@ const Teachers = () => {
                                 <div className='bg-neutral-800 rounded-full text-white circleid text-center'>
                                     {s.id}
                                 </div>
-                                <Link to={ `/${id}/teacher/${s.id}` } className='mx-2 duration-300 hover:underline'>{s.name}</Link>
+                                <Link to={ `/${id}/teacher/${s.id}` } className='mx-2 duration-300 hover:underline truncate'>{s.name}</Link>
                             </div>
                             <div className="bg-neutral-800 p-2 w-50 text-white rounded-xl">
                                 <span>{s.subject}</span>

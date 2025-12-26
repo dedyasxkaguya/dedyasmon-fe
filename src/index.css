@@ -7,7 +7,9 @@ body {
     min-height: 144dvh;
     padding-left: 12dvw;
 }
-
+#nav{
+    display: none;
+}
 .dashboard {
     max-width: 12dvw;
 }
@@ -84,16 +86,11 @@ body {
     width: auto;
 }
 
-@media (min-width:10px) {
-
-    #nav {
-        display: none;
-    }
-
-    /* .dashboard {
-        max-width: 16dvw;
-    } */
+#leftimg,
+#left0img {
+    display: none;
 }
+
 
 @media (max-width:1080px) {
     .specialFlex {
@@ -109,14 +106,42 @@ body {
 
 @media (max-width:720px) {
     body {
+        padding-top: 10dvh;
         padding-left: 0;
         display: flex;
         justify-content: center;
     }
+    #nav {
+        display: flex;
+    }
 
-    .dashboard {
+    #right0,
+    #right {
+        width: 100dvw !important;
+    }
+
+    #left0,
+    #left {
+        display: none !important;
+    }
+
+    #leftimg,
+    #left0img {
+        display: block;
+    }
+
+    .dashboardDeks {
         display: none;
         max-width: fit-content;
+        z-index: 99;
+    }
+    .dashboardMobile{
+        max-width: 48dvw;
+        z-index: 999;
+    }
+
+    .profile-image {
+        width: 8dvh;
     }
 
     .modalGallery img {

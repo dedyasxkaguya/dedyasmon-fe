@@ -79,7 +79,7 @@ const TeacherComment = () => {
         <p className='font-semibold text-xl'>TeacherComment</p>
         <div className="flex flex-col gap-4">
           Belum ada komentar
-          <div className="flex gap-2">
+          <div className="flex gap-2 specialFlex">
             <input id='text' type="text" className='p-2 rounded-xl shadow border cursor-pointer w-full' placeholder='Tambahkan Komentar' />
             <select name="" id="rating" className='p-2 rounded-xl border shadow'>
               <option value="rating" selected hidden>Rating</option>
@@ -112,7 +112,7 @@ const TeacherComment = () => {
             </div>
           )
         })}
-        <div className="flex gap-2">
+        <div className="flex gap-2 specialFlex">
           <input id='text' type="text" className='p-2 rounded-xl shadow border cursor-pointer w-full' placeholder='Tambahkan Komentar' />
           <select name="" id="rating" className='p-2 rounded-xl border shadow'>
             <option value="rating" selected hidden>Rating</option>

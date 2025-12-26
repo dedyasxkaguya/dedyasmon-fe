@@ -61,11 +61,12 @@ const Projectall = () => {
                 {arr.map((a) => {
                     return (
                         <div className="p-2 rounded-2xl shadow flex gap-2 notdiv flex-col">
-                            <div className="bg-black text-white p-2 rounded-lg">
-                                <span>@{a?.user?.username}'s {a?.data?.name}</span>
+                            <div className="bg-black text-white p-2 rounded-lg gap-4 lg:flex-row sm:flex-col lg:items-center">
+                                <div>@{a?.user?.username}'s {a?.data?.name}</div>
                                 {user?.role == 'ADMIN' && (
-                                    <a className='p-1 bg-red-600 text-white rounded mx-2 hover:opacity-75' onClick={() => handleDelete(a?.id)}>
-                                        Delete <i className='bi bi-trash  mx-2'></i></a>
+                                    <button type='button' className='p-1 bg-red-600 text-white rounded hover:opacity-75' onClick={() => handleDelete(a?.id)}>
+                                        Delete <i className='bi bi-trash mx-2'></i>
+                                    </button>
                                 )}
                             </div>
                             <div className="flex notdiv gap-2">
@@ -78,9 +79,12 @@ const Projectall = () => {
                                             {a?.data?.owner?.login}
                                         </a>
                                         /{a?.data?.name}</span>
-                                    <div className='flex items-center gap-2'>
-                                        <span>Bahasa yang digunakan : {a?.data?.language} </span>
-                                        <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${a?.data?.language?.toLowerCase()}/${a?.data?.language?.toLowerCase()}-original.svg`} alt="" className='w-6' />
+                                    <div className='flex justify-center flex-col'>
+                                        <span>Language  :</span>
+                                        <div className='flex gap-2 items-center'>
+                                            <span>{a?.data?.language}</span>
+                                            <img src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${a?.data?.language?.toLowerCase()}/${a?.data?.language?.toLowerCase()}-original.svg`} alt="" className='w-6' />
+                                        </div>
                                     </div>
                                     {/* <a href={a?.data?.svn_url} className='px-1 rounded-lg border border-black '>
                                         Github link

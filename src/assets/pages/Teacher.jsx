@@ -15,11 +15,11 @@ const Teacher = () => {
     }, [])
     return (
         <>
-            <div className="flex w-dvw pe-8 font-['Raleway'] ">
+            <div className="flex w-dvw font-['Raleway']">
                 <Dashboard0 />
                 <main className='p-4 w-full'>
-                    <p className='text-2xl my-2'>Kelas X-RPL 2025-2026</p>
-                    <div className="flex gap-2 specialFlex">
+                    <p className='text-2xl my-2 text-center'>Kelas X-RPL 2025-2026</p>
+                    <div className="flex gap-2 specialFlex justify-center items-center">
                         <Students />
                         <Teachers />
                     </div>

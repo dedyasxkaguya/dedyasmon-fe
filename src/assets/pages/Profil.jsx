@@ -17,12 +17,10 @@ const Profil = () => {
                 .then(data => {
                     const fetched = data.data
                     setUser(fetched)
-                    console.log(fetched)
                     if (fetched.role == 'SISWA') {
                         axios.get(`http://127.0.0.1:8000/api/student/detail/${fetched.id}/all`)
                         .then(data=>{
                             const fetched0 = data.data
-                            console.log(fetched0)
                             setSiswa(fetched0)
                         })
                     }
@@ -34,7 +32,7 @@ const Profil = () => {
         return (
             <main className='w-[80dvw] font-["Raleway"] p-2' data-aos="fade-up">
                 <div className="bg-neutral-100 shadow-sm p-4 rounded-4xl flex gap-4 items-center">
-                    <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 text-4xl">
+                    <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 lg:text-4xl sm:text-sm!">
                         {name.toUpperCase()}
                     </div>
                     <div className="flex flex-col">
@@ -56,17 +54,17 @@ const Profil = () => {
             <>
                 <main className='w-[80dvw] p-2 font-["Raleway"] ' data-aos="fade-up">
                     <div className="border border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
-                        <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 text-4xl">
+                        <div className="profile-image lg:w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 lg:text-4xl sm:text-sm!">
                             {name}
                         </div>
                         <div className="flex flex-col">
-                            <span className='text-2xl font-semibold'>
+                            <span className='lg:text-2xl sm:text-sm! font-semibold'>
                                 {siswa?.name}
                             </span>
-                            <span className='text-md font-light mb-4'>
+                            <span className='font-light mb-4'>
                                 {siswa?.nis}
                             </span>
-                            <span className='text-xl'>
+                            <span className='lg:text-xl sm:text-sm!'>
                                 X-RPL | {siswa?.id}
                             </span>
                         </div>
@@ -76,7 +74,7 @@ const Profil = () => {
                         className
                         ="border bg-neutral-100 border-neutral-400 p-4 rounded-3xl flex flex-col gap-4 items-start">
                         <span className='text-2xl '>Biodata</span>
-                        <div className="flex justify-between gap-4">
+                        <div className="flex justify-between gap-4 specialFlex">
                             <div className="rounded-xl border border-neutral-400 flex flex-col overflow-hidden"
                                 data-aos='fade-up'>
                                 <Biodata param='Tempat Lahir' value={siswa?.tempat_lahir} />
