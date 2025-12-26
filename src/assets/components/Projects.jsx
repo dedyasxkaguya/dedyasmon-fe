@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 const Projects = (props) => {
-    const apiUrl = import.meta.env.VITE_API_URL;
     const { id } = useParams()
     const [show, setShow] = useState(false)
     const [user, setUser] = useState()
@@ -43,7 +42,7 @@ const Projects = (props) => {
             console.log(github_link)
             axios.get(github_link, {
                 headers: {
-                    'Authorization': `Bearer ${apiUrl}`,
+                    'Authorization': `Bearer ${import.meta.env.VITE_API_URL}`,
                     'Accept': 'application/json'
                 }
             }).then(data => {
