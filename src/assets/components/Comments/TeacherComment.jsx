@@ -75,13 +75,13 @@ const TeacherComment = () => {
 
   if (comments.length < 1) {
     return (
-      <div className='modaldiv p-4 rounded-3xl shadow'>
+      <div className='bg-(--color-powder-blue) modaldiv p-4 rounded-3xl shadow text-(--color-royal-blue)'>
         <p className='font-semibold text-xl'>TeacherComment</p>
         <div className="flex flex-col gap-4">
           Belum ada komentar
           <div className="flex gap-2 specialFlex">
-            <input id='text' type="text" className='p-2 rounded-xl shadow border cursor-pointer w-full' placeholder='Tambahkan Komentar' />
-            <select name="" id="rating" className='p-2 rounded-xl border shadow'>
+            <input id='text' type="text" className='p-2 rounded-xl shadow border border-(--color-royal-blue) cursor-pointer w-full' placeholder='Tambahkan Komentar' />
+            <select name="" id="rating" className='p-2 rounded-xl border border-(--color-royal-blue) shadow'>
               <option value="rating" selected hidden>Rating</option>
               <option value="1">1 ★</option>
               <option value="2">2 ★★</option>
@@ -89,7 +89,7 @@ const TeacherComment = () => {
               <option value="4">4 ★★★★</option>
               <option value="5">5 ★★★★★</option>
             </select>
-            <button type="button" className='bg-black rounded-xl p-2 text-white' onClick={() => handleSubmit()}>
+            <button type="button" className='bg-(--color-royal-blue) rounded-xl p-2 text-white' onClick={() => handleSubmit()}>
               Submit</button>
           </div>
         </div>
@@ -97,12 +97,12 @@ const TeacherComment = () => {
     )
   }
   return (
-    <div className='p-4 rounded-3xl shadow'>
-      <p className='font-semibold text-xl'>TeacherComment</p>
-      <div className="flex flex-col gap-4">
+    <div className='p-4 rounded-3xl shadow bg-(--color-powder-blue) text-(--color-royal-blue)'>
+      <p className='font-semibold text-xl mb-2'>TeacherComment</p>
+      <div className="flex flex-col gap-2">
         {comments.map((c) => {
           return (
-            <div className="rounded-xl shadow p-2">
+            <div className="bg-neutral-50 rounded-xl shadow p-2">
               <p className='text-neutral-400'>@{c.username} | 
                 <span className='text-yellow-400'>{'★'.repeat(c.rating)}</span>
                 <span className='text-yellow-400'>{'☆'.repeat(5 - (c.rating))}
@@ -113,8 +113,8 @@ const TeacherComment = () => {
           )
         })}
         <div className="flex gap-2 specialFlex">
-          <input id='text' type="text" className='p-2 rounded-xl shadow border cursor-pointer w-full' placeholder='Tambahkan Komentar' />
-          <select name="" id="rating" className='p-2 rounded-xl border shadow'>
+          <input id='text' type="text" className='bg-neutral-50 p-2 rounded-xl shadow border border-(--color-royal-blue) cursor-pointer w-full' placeholder='Tambahkan Komentar' />
+          <select name="" id="rating" className='bg-neutral-50 p-2 rounded-xl border border-(--color-royal-blue) shadow'>
             <option value="rating" selected hidden>Rating</option>
             <option value="1">1 ★</option>
             <option value="2">2 ★★</option>
@@ -122,7 +122,7 @@ const TeacherComment = () => {
             <option value="4">4 ★★★★</option>
             <option value="5">5 ★★★★★</option>
           </select>
-          <button type="button" className='bg-black rounded-xl p-2 text-white' onClick={() => handleSubmit()}>
+          <button type="button" className='bg-(--color-royal-blue) rounded-xl p-2 text-white' onClick={() => handleSubmit()}>
             Submit</button>
         </div>
       </div>

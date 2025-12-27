@@ -16,16 +16,16 @@ const LeaderboardGuru = () => {
     const sortTeachers = teachers.sort((a,b)=>b.rating - a.rating)
     console.log(sortTeachers)
     return (
-        <div className="modaldiv p-2 rounded-2xl shadow w-[40dvw]">
-            <div className="bg-black rounded-xl text-white p-2">
+        <div className="modaldiv bg-(--color-powder-blue) p-2 rounded-2xl shadow w-[40dvw]">
+            <div className="bg-(--color-royal-blue) rounded-xl text-white p-2">
                 Leaderboard Guru
             </div>
-            <div className="flex flex-col gap-2 modaldiv-content p-2">
+            <div className="flex flex-col gap-2 modaldiv-content py-2">
                 {sortTeachers.map((t) => {
                     const decimal = (t.rating-Math.floor(t.rating))
                     return (
-                        <div className="flex justify-between p-2 rounded-xl shadow">
-                            <Link to={`/${id}/teacher/${t.id}`} className='hover:underline duration-300'>{t.name}</Link>
+                        <div className="flex justify-between p-2 rounded-xl shadow border border-(--color-royal-blue)">
+                            <Link to={`/${id}/teacher/${t.id}`} className='hover:underline duration-300 text-(--color-royal-blue)'>{t.name}</Link>
                             <span>
                                 <span className='mx-2 text-center'>{t.rating}</span>
                                 <span className='text-yellow-500'>

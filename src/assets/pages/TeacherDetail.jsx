@@ -25,7 +25,7 @@ const TeacherDetail = () => {
             <Dashboard0 />
             <div className="">
                 <main className='w-[80dvw] font-["Raleway"] p-4 flex flex-col gap-4' data-aos="fade-up">
-                    <div className="bg-neutral-100 shadow-sm p-4 rounded-4xl flex gap-4 items-center">
+                    <div className="bg-(--color-powder-blue) shadow-sm p-4 rounded-4xl flex gap-4 items-center">
                         <div className="flex flex-col items-center justify-center gap-2">
                             <div className="profile-image w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 lg:text-4xl sm:text-sm!">
                                 {name}

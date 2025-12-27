@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+:root {
+    /* Main Palette */
+    --color-royal-blue: #162660;
+    --color-powder-blue: #D0E6FD;
+    --color-bone: #F1E4D1;
+}
+
 body {
     max-width: 100dvw;
     overflow-x: hidden;
@@ -7,11 +14,17 @@ body {
     min-height: 144dvh;
     padding-left: 12dvw;
 }
-#nav{
+
+#nav {
     display: none;
 }
+
 .dashboard {
     max-width: 12dvw;
+}
+
+.mobileOnly {
+    display: none;
 }
 
 .profile-image {
@@ -91,17 +104,20 @@ body {
     display: none;
 }
 
+.scheduleGrid{
+    grid-template-columns: repeat(5,1fr);
+}
 
 @media (max-width:1080px) {
     .specialFlex {
         /* padding-left: 10dvw; */
         flex-direction: column;
     }
-
+    
     .specialFlex .notdiv {
         width: auto;
     }
-
+    
 }
 
 @media (max-width:720px) {
@@ -111,51 +127,61 @@ body {
         display: flex;
         justify-content: center;
     }
+    
     #nav {
         display: flex;
     }
-
+    
+    .mobileOnly {
+        display: block;
+    }
+    
     #right0,
     #right {
         width: 100dvw !important;
     }
-
+    
     #left0,
     #left {
         display: none !important;
     }
-
+    
     #leftimg,
     #left0img {
         display: block;
     }
-
+    
     .dashboardDeks {
         display: none;
         max-width: fit-content;
         z-index: 99;
     }
-    .dashboardMobile{
+    
+    .dashboardMobile {
         max-width: 48dvw;
         z-index: 999;
     }
-
+    
     .profile-image {
         width: 8dvh;
     }
-
+    
     .modalGallery img {
         height: auto;
         max-width: 90dvw;
     }
-
+    
     .modalGallery {
         max-width: 64dvw;
     }
-
+    
     .modalGalleryAddImg {
         height: auto;
         max-width: 64dvw !important;
+    }
+    
+    .scheduleGrid{
+        grid-template-columns: repeat(3,1fr);
     }
 
     .specialFlex {
@@ -165,7 +191,8 @@ body {
     .modaldiv {
         /* width: 80dvw !important; */
         width: fit-content !important;
-        max-width: 80dvw;
+        min-width: 88dvw;
+        max-width: 88dvw;
     }
 
     .projectImgBox {

@@ -31,31 +31,58 @@ const Login = () => {
             text: 'Fetching API database',
             showConfirmButton: false
         })
-        axios.post('http://127.0.0.1:8000/api/user/login', formData)
-            .then(data => {
-                const fetched = data.data
-                console.log(fetched)
-                if (fetched.status) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil',
-                        text: 'Mengarahkan ke home dalam 2 detik',
-                        showConfirmButton: false
-                    })
-                    setTimeout(() => {
-                        location.href = `/${fetched.user.slug}/home`
-                    }, 2000);
+        if (emailElem.value) {
+            if (passwordElem.value.length < 8) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Peringatan',
+                    text: 'Password harus memiliki 8 karakter atau lebih',
+                    confirmButtonText: 'Oke, isi kembali'
+                    // showConfirmButton: false
+                })
+                return
+            }
+            axios.post('http://127.0.0.1:8000/api/user/login', formData)
+                .then(data => {
+                    const fetched = data.data
+                    console.log(fetched)
+                    if (fetched.status) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil',
+                            text: 'Mengarahkan ke home dalam 2 detik',
+                            showConfirmButton: false
+                        })
+                        setTimeout(() => {
+                            location.href = `/${fetched.user.slug}/home`
+                        }, 2000);
 
-                    return
-                } else {
+                        return
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal',
+                            text: fetched.text,
+                            confirmButtonText: 'Try again'
+                        })
+                    }
+                })
+                .catch(err => {
                     Swal.fire({
                         icon: 'error',
                         title: 'Gagal',
-                        text: fetched.text,
-                        confirmButtonText: 'Try again'
+                        text: 'Gagal Registrasi, coba lagi atau hubungi admin',
+                        footer: err.response.data.message
                     })
-                }
+                })
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Peringatan',
+                text: 'Pastikan isi semua form',
+                confirmButtonText: 'Oke, isi kembali'
             })
+        }
     }
 
     return (
@@ -69,8 +96,8 @@ const Login = () => {
 
                 <img src={bgrpl} alt="" className='h-dvh opacity-5 object-cover absolute' />
             </div>
-            <div id="right" className='h-dvh w-[40dvw] bg-blue-100 flex flex-col justify-center items-center z-10 fixed right-0'>
-                <form className="flex border rounded-3xl p-4 flex-col gap-2 bg-blue-950 text-neutral-50 w-80">
+            <div id="right" className='h-dvh w-[40dvw] bg-(--color-powder-blue) flex flex-col justify-center items-center z-10 fixed right-0'>
+                <form className="flex border rounded-3xl p-4 flex-col gap-2 bg-(--color-royal-blue) text-neutral-50 w-80">
                     <span className='text-xl font-semibold'>Login</span>
                     <span className='text-sm font-light'>Welcome back to dedyasmon</span>
                     <br />
@@ -80,14 +107,14 @@ const Login = () => {
                         <Input id='password' type="password" name='Password' />
                         <Link to={'/register'} className='text-sm underline'>New?register now</Link>
                         <button type="button" id='btn'
-                            className='p-2 rounded-xl border duration-500 border-neutral-50 hover:bg-neutral-50 hover:text-neutral-800'
+                            className='p-2 rounded-xl border duration-500 border-neutral-50 hover:bg-neutral-50 hover:text-neutral-800 active:bg-neutral-50 active:text-neutral-800'
                             onClick={() => handleLogin()}>
                             Login
                         </button>
                     </div>
                 </form>
-                <img src={bgrpl} alt="" id='leftimg' className='fixed -bottom-10 -z-10 opacity-5' />
-                <div className="w-[160dvw] h-[120dvw] bg-blue-950 rounded-[100%] -z-20 fixed -bottom-70 opacity-80"></div>
+                <img src={bgrpl} alt="" id='leftimg' className='fixed -bottom-10 -z-10 opacity-5 mobileOnly' />
+                <div className="w-[160dvw] h-[120dvw] bg-blue-950 rounded-[100%] -z-20 fixed -bottom-70 opacity-80 mobileOnly"></div>
             </div>
         </main>
     )

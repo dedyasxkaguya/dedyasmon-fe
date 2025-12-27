@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const Projectall = () => {
@@ -55,14 +55,18 @@ const Projectall = () => {
         })
     }
     return (
-        <div className='m-4 p-2 rounded-2xl shadow modaldiv'>
+        <div className='m-4 p-2 rounded-3xl shadow modaldiv bg-(--color-powder-blue)'>
             <div className="text-2xl font-medium pb-2 notdiv">All Projects</div>
             <div className="flex flex-col gap-2 notdiv modaldiv-content">
                 {arr.map((a) => {
                     return (
-                        <div className="p-2 rounded-2xl shadow flex gap-2 notdiv flex-col">
-                            <div className="bg-black text-white p-2 rounded-lg gap-4 lg:flex-row sm:flex-col lg:items-center">
-                                <div>@{a?.user?.username}'s {a?.data?.name}</div>
+                        <div className="p-2 border border-[--color-royal-blue] rounded-2xl shadow flex gap-2 notdiv flex-col">
+                            <div className="bg-(--color-royal-blue) text-white p-2 rounded-lg gap-4 lg:flex-row sm:flex-col lg:items-center">
+                                <div>
+                                    <span>@{a?.user?.username}'s </span>
+                                    <span className='text-xs font-extralight'>as</span>
+                                    <Link to={''} className='mx-2 underline'>{a?.category?.name}</Link>
+                                </div>
                                 {user?.role == 'ADMIN' && (
                                     <button type='button' className='p-1 bg-red-600 text-white rounded hover:opacity-75' onClick={() => handleDelete(a?.id)}>
                                         Delete <i className='bi bi-trash mx-2'></i>

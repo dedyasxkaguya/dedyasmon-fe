@@ -118,18 +118,19 @@ const Gallery = () => {
             <div className="p-2 py-0 modaldiv mb-8" id='main' onClick={() => handleClose()}>
                 <div className="p-4 rounded-2xl w-[80dvw] pb-1 ">
                     <div >
-                        <span className='text-xl font-semibold'>Andaikan ini galeri </span>
-                        <button type='button' className='mx-2 text-white bg-black rounded p-2 text-sm duration-300 hover:opacity-75' onClick={() => handleAdd()}>
+                        <span className='text-xl font-semibold me-2 '>Galeri X-RPL </span>
+                        <button type='button' 
+                        className='text-white bg-(--color-royal-blue) rounded p-2 text-sm duration-300 hover:opacity-75' onClick={() => handleAdd()}>
                             <i className='bi bi-plus'></i>Tambahkan Gambar
                         </button>
                     </div>
-                    <div className="gallery0 grid gap-2 my-4 rounded-xl">
+                    <div id='gallery0' className="gallery0 grid gap-2 my-4 rounded-xl">
                         {gallery.map((a) => {
                             if (a.id > 3) {
                                 return
                             }
                             return (
-                                <div className="rounded-lg overflow-hidden -z-10">
+                                <div className="rounded-lg overflow-hidden">
                                     <img src={`http://127.0.0.1:8000/${a?.image}`}
                                         className='transition-all transition-discrete duration-500 blur-[2px] grayscale-50 hover:blur-none hover:grayscale-0 hover:scale-105 aspect-square object-cover' onClick={(e) => handleImage(e)} />
                                     <span style={{ display: 'none' }}>{a?.title}</span>
@@ -139,13 +140,13 @@ const Gallery = () => {
                             )
                         })}
                     </div>
-                    <div className="gallery grid gap-2 my-4 rounded-xl ">
+                    <div id='gallery1' className="gallery grid gap-2 my-4 rounded-xl ">
                         {gallery.map((a) => {
                             if (a.id <= 3) {
                                 return
                             }
                             return (
-                                <div className="rounded-lg overflow-hidden -z-20">
+                                <div className="rounded-lg overflow-hidden">
                                     <img src={`http://127.0.0.1:8000/${a?.image}`} alt=''
                                         className='transition-all transition-discrete duration-500 blur-[2px] grayscale-50 hover:blur-none hover:grayscale-0 hover:scale-105 ' onClick={(e) => handleImage(e)} />
                                     <span style={{ display: 'none' }}>{a?.title}</span>

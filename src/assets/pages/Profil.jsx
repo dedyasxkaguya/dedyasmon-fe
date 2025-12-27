@@ -52,9 +52,10 @@ const Profil = () => {
     } else {
         return (
             <>
-                <main className='w-[80dvw] p-2 font-["Raleway"] ' data-aos="fade-up">
-                    <div className="border border-neutral-400 p-4 rounded-4xl flex gap-4 items-center mb-4">
-                        <div className="profile-image lg:w-[6dvw] flex justify-center items-center rounded-full bg-blue-200 lg:text-4xl sm:text-sm!">
+                <main className='w-[80dvw] p-4 font-["Raleway"] ' data-aos="fade-up">
+                    <div className=" bg-(--color-powder-blue) p-4 rounded-4xl flex gap-4 items-center mb-4">
+                        <div className={`profile-image lg:w-[6dvw] flex justify-center items-center rounded-full text-white
+                            ${siswa?.gender=='PEREMPUAN' ? 'bg-[#FF8DA1]' : 'bg-(--color-royal-blue)'} lg:text-4xl sm:text-sm!`}>
                             {name}
                         </div>
                         <div className="flex flex-col">
@@ -72,16 +73,16 @@ const Profil = () => {
                     <div
                         data-aos='fade-up'
                         className
-                        ="border bg-neutral-100 border-neutral-400 p-4 rounded-3xl flex flex-col gap-4 items-start">
+                        ="bg-(--color-powder-blue) p-4 rounded-3xl flex flex-col gap-4 items-start">
                         <span className='text-2xl '>Biodata</span>
                         <div className="flex justify-between gap-4 specialFlex">
-                            <div className="rounded-xl border border-neutral-400 flex flex-col overflow-hidden"
+                            <div className="rounded-xl border border-neutral-400 bg-neutral-50 flex flex-col overflow-hidden"
                                 data-aos='fade-up'>
                                 <Biodata param='Tempat Lahir' value={siswa?.tempat_lahir} />
                                 <Biodata param='Tanggal Lahir' value={siswa?.tanggal_lahir} />
                                 <Biodata param='Alamat' value={siswa?.alamat} last={true} />
                             </div>
-                            <div className="rounded-xl border border-neutral-400 flex flex-col overflow-hidden"
+                            <div className="rounded-xl border border-neutral-400 bg-neutral-50 flex flex-col overflow-hidden"
                                 data-aos='fade-up'>
                                 <Biodata param='Gender' value={siswa?.gender} />
                                 <Biodata param='Asal Sekolah' value={siswa?.asal_sekolah} />
