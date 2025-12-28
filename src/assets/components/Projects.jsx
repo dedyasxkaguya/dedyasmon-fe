@@ -136,12 +136,12 @@ const Projects = (props) => {
                 </button>
                 {project.map((a) => {
                     return (
-                        <div className="p-2 rounded-2xl shadow flex gap-2 notdiv flex-col border border-(--color-royal-blue)">
+                        <div className="p-2 rounded-2xl shadow flex gap-2 notdiv flex-col bg-white">
                             <div className="bg-(--color-royal-blue) text-white p-2 rounded-lg gap-4 lg:flex-row sm:flex-col lg:items-center">
                                 <div>
                                     <span>your's {a?.data?.name} </span>
                                     <span className='text-xs font-extralight'>as</span>
-                                    <Link to={''} className='mx-2 underline'>{a?.category?.name}</Link>
+                                    <Link to={`/${id}/category/${a?.category?.slug}`} className='mx-2 underline'>{a?.category?.name}</Link>
                                 </div>
                                 <button type='button' className='p-1 bg-red-600 text-white rounded hover:opacity-75' onClick={() => handleDelete(a?.id)}>
                                     Delete <i className='bi bi-trash mx-2'></i>

@@ -60,12 +60,12 @@ const Projectall = () => {
             <div className="flex flex-col gap-2 notdiv modaldiv-content">
                 {arr.map((a) => {
                     return (
-                        <div className="p-2 border border-[--color-royal-blue] rounded-2xl shadow flex gap-2 notdiv flex-col">
+                        <div className="p-2 bg-white rounded-2xl shadow flex gap-2 notdiv flex-col">
                             <div className="bg-(--color-royal-blue) text-white p-2 rounded-lg gap-4 lg:flex-row sm:flex-col lg:items-center">
                                 <div>
                                     <span>@{a?.user?.username}'s </span>
                                     <span className='text-xs font-extralight'>as</span>
-                                    <Link to={''} className='mx-2 underline'>{a?.category?.name}</Link>
+                                    <Link to={`/${id}/category/${a?.category?.slug}`} className='mx-2 underline'>{a?.category?.name}</Link>
                                 </div>
                                 {user?.role == 'ADMIN' && (
                                     <button type='button' className='p-1 bg-red-600 text-white rounded hover:opacity-75' onClick={() => handleDelete(a?.id)}>
@@ -75,7 +75,7 @@ const Projectall = () => {
                             </div>
                             <div className="flex notdiv gap-2">
                                 <div className="projectImgBox">
-                                    <img src={a?.data?.owner?.avatar_url} alt="" className='projectIconImg aspect-square rounded-xl' />
+                               np     <img src={a?.data?.owner?.avatar_url} alt="" className='projectIconImg aspect-square rounded-xl' />
                                 </div>
                                 <div className="flex flex-col notdiv max-w-[60%]">
                                     <span className=''>

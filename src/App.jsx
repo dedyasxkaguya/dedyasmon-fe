@@ -10,6 +10,7 @@ import TeacherDetail from './assets/pages/TeacherDetail'
 import Subjects from './assets/pages/Subjects'
 import GalleryPage from './assets/pages/GalleryPage'
 import ProjectPage from './assets/pages/ProjectPage'
+import Categories from './assets/pages/Categories'
 
 function App() {
 
@@ -19,12 +20,12 @@ function App() {
       <Route path='/' element={<Login/>}></Route>
       <Route path='/:id/home' element={<Dashboard/>}></Route>
       <Route path='/register' element={<Register/>}></Route>
-      {/* <Route path='/login' element={<Login/>}></Route> */}
       <Route path='/:id/teachers' element={<Teacher/>}></Route>
       <Route path='/:id/teacher/:teacher' element={<TeacherDetail/>}></Route>
       <Route path='/:id/subjects' element={<Subjects/>}></Route>
       <Route path='/:id/gallery' element={<GalleryPage/>}></Route>
       <Route path='/:id/projects' element={<ProjectPage/>}></Route>
+      <Route path='/:id/category/:slug' element={<Categories/>}></Route>
     </Routes>
     </>
   )
