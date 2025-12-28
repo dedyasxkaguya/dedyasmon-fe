@@ -129,8 +129,7 @@ const Projects = (props) => {
             <div className="lg:text-2xl font-medium pb-2 sm:text-sm text-[--color-royal-blue]">{props.name?.split(' ')[0]}'s Projects</div>
             <div className="modaldiv-content flex flex-col gap-2">
                 <button type="button" onClick={() => handleShow()}
-                    className='p-2 rounded-xl duration-500 border border-[--color-royal-blue] text-[(--color-royal-blue)] 
-                hover:bg-(--color-royal-blue) hover:text-white' >
+                    className='p-2 rounded-xl duration-500 border border-[--color-royal-blue] text-[(--color-royal-blue)] hover:bg-(--color-royal-blue) hover:text-white' >
                     Tambahkan Project
                     <i className="bi bi-plus mx-2"></i>
                 </button>

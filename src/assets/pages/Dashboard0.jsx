@@ -23,13 +23,13 @@ const Dashboard0 = () => {
     }, [])
     const handleClick = () => {
         if (!isShow) {
-            document.getElementById('gallery0').style.display='none'
-            document.getElementById('gallery1').style.display='none'
+            document.getElementById('gallery0').style.display = 'none'
+            document.getElementById('gallery1').style.display = 'none'
             setLeft('left-0')
             setShow(!isShow)
         } else {
-            document.getElementById('gallery0').style.display='grid'
-            document.getElementById('gallery1').style.display='grid'
+            document.getElementById('gallery0').style.display = 'grid'
+            document.getElementById('gallery1').style.display = 'grid'
             setLeft('-left-100')
             setShow(!isShow)
         }
@@ -54,8 +54,12 @@ const Dashboard0 = () => {
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Service Support</span>
-                            <Buttons title='Author' icon='github' link='' />
-                            <Buttons title='Feedback' icon='chat-left' link='' />
+                            <Link target='_blank'
+                                to='https://github.com/dedyasxkaguya' className='duration-500 font-light text-lg rounded-xl p-1 px-2 hover:bg-neutral-50 hover:text-neutral-800'>
+                                <i className={`bi bi-github mx-2`}></i>
+                                Author
+                            </Link>
+                            <Buttons title='Feedback' icon='chat-left' link='/feedback' />
                         </div>
                     </main>
 
@@ -88,8 +92,12 @@ const Dashboard0 = () => {
                         </div>
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Service Support</span>
-                            <Buttons title='Author' icon='github' link='' />
-                            <Buttons title='Feedback' icon='chat-left' link='' />
+                            <Link target='_blank'
+                                to='https://github.com/dedyasxkaguya' className='duration-500 font-light text-lg rounded-xl p-1 px-2 hover:bg-neutral-50 hover:text-neutral-800'>
+                                <i className={`bi bi-github mx-2`}></i>
+                                Author
+                            </Link>
+                            <Buttons title='Feedback' icon='chat-left' link='/feedback' />
                         </div>
                     </main>
                     <div className="flex flex-col gap-4">
