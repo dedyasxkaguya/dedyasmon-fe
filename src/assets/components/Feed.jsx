@@ -1,7 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 const Feed = () => {
+    const { id } = useParams()
+    const [user, setUser] = useState()
     // ulasan
     const [ulasan, isUlasan] = useState(false)
     //bug
@@ -26,7 +29,15 @@ const Feed = () => {
                 const fetched = data.data
                 setSiswa(fetched)
             })
+        setTimeout(() => {
+            axios.get(`http://127.0.0.1:8000/api/user/${id}`)
+                .then(data => {
+                    const fetched_user = data.data
+                    setUser(fetched_user)
+                })
+        }, 1000);
     }, [])
+
     const handleChange = (e) => {
         const value = e.target.value
         console.log(value)
@@ -94,6 +105,67 @@ const Feed = () => {
     const handleChange3 = (e) => {
         setSelectedFitur(e.target.value)
     }
+    const handleSubmit = () => {
+        if (user.id) {
+
+            const formData = new FormData()
+            const isUlasan = ulasan ? 1 : 0;
+            const isBug = bug ? 1 : 0;
+            const isData = inputData ? 1 : 0;
+            const isSaran = fitur ? 1 : 0;
+            const user_id = user?.id;
+            const rating = document.getElementById('rating') ? document.getElementById('rating').value : ''
+            const text_ulasan = document.getElementById('text_ulasan') ? document.getElementById('text_ulasan').value : ''
+            const page_bug = document.getElementById('page_bug') ? document.getElementById('page_bug').value : ''
+            const text_bug = document.getElementById('text_bug') ? document.getElementById('text_bug').value : ''
+            const siswa_id = document.getElementById('siswa_id') ? document.getElementById('siswa_id').value : ''
+            const collumn_wrong = document.getElementById('collumn_wrong') ? document.getElementById('collumn_wrong').value : ''
+            const data_wrong = dataSelected ? dataSelected : ''
+            const data_right = document.getElementById('data_right') ? document.getElementById('data_right').value : ''
+            const page_fitur = document.getElementById('page_fitur') ? document.getElementById('page_fitur').value : ''
+            const text_fitur = document.getElementById('text_fitur') ? document.getElementById('text_fitur').value : ''
+
+            formData.append('isUlasan', isUlasan)
+            formData.append('isBug', isBug)
+            formData.append('isData', isData)
+            formData.append('isSaran', isSaran)
+            formData.append('user_id', user_id)
+            formData.append('rating', rating)
+            formData.append('text_ulasan', text_ulasan)
+            formData.append('page_bug', page_bug)
+            formData.append('text_bug', text_bug)
+            formData.append('siswa_id', siswa_id)
+            formData.append('collumn_wrong', collumn_wrong)
+            formData.append('data_wrong', data_wrong)
+            formData.append('data_right', data_right)
+            formData.append('page_fitur', page_fitur)
+            formData.append('text_fitur', text_fitur)
+
+            console.log({
+                'isUlasan': isUlasan,
+                'isBug': isBug,
+                'isData': isData,
+                'isSaran': isSaran,
+                'user_id': user_id,
+                'rating': rating,
+                'text_ulasan': text_ulasan,
+                'page_bug': page_bug,
+                'text_bug': text_bug,
+                'siswa_id': siswa_id,
+                'collumn_wrong': collumn_wrong,
+                'data_wrong': data_wrong,
+                'data_right': data_right,
+                'page_fitur': page_fitur,
+                'text_fitur': text_fitur
+            })
+            axios.post('http://127.0.0.1:8000/api/feedback/add',formData)
+            .then(data=>{
+                const fetched = data.data
+                console.log(fetched)
+            })
+        }
+    }
+
     return (
         <div className="p-4">
             <div className='shadow w-[80dvw] bg-(--color-powder-blue) rounded-3xl p-2'>
@@ -117,7 +189,7 @@ const Feed = () => {
                         <>
                             <label htmlFor="">
                                 Berikan Rating
-                                <select name="" id="" className='p-2 rounded-xl border border-(--color-royal-blue) w-full'>
+                                <select name="" id="rating" className='p-2 rounded-xl border border-(--color-royal-blue) w-full'>
                                     <option value="pilih" hidden selected>Pilih</option>
                                     <option value="1" >1 ★</option>
                                     <option value="2" >2 ★★</option>
@@ -127,10 +199,10 @@ const Feed = () => {
                                 </select>
                             </label>
 
-                            <textarea name="" id="" cols="24" rows="8" placeholder='Berikan ulasan kepada developer'
+                            <textarea name="" id="text_ulasan" cols="24" rows="8" placeholder='Berikan ulasan kepada developer'
                                 className='p-2 rounded-xl border border-(--color-royal-blue) w-full'></textarea>
 
-                            <button type="button"
+                            <button type="button" onClick={()=>handleSubmit()}
                                 className='p-2 duration-500 rounded-xl border border-(--color-royal-blue) hover:bg-(--color-royal-blue) hover:text-white'>
                                 Kirim
                             </button>
@@ -144,7 +216,7 @@ const Feed = () => {
                             {/* <span>Menemukan bug? beritahu kami</span> */}
                             <label htmlFor="">
                                 Pilih halaman yang memiliki bug
-                                <select name="" id="" className='p-2 rounded-xl border border-(--color-royal-blue) w-full' onChange={(e) => handleChange2(e)}>
+                                <select name="" id="page_bug" className='p-2 rounded-xl border border-(--color-royal-blue) w-full' onChange={(e) => handleChange2(e)}>
                                     <option value="pilih" hidden selected>Pilih</option>
                                     {pages.map((p) => {
                                         return (
@@ -158,10 +230,10 @@ const Feed = () => {
                     {selectedBug && (
                         <>
                             <span>Bug seperti apa yang kamu temukan pada halaman {selectedBug}</span>
-                            <textarea name="" id="" cols="24" rows="8" placeholder='Deskripsikan bug'
+                            <textarea name="" id="text_bug" cols="24" rows="8" placeholder='Deskripsikan bug'
                                 className='p-2 rounded-xl border border-(--color-royal-blue) w-full'></textarea>
 
-                            <button type="button"
+                            <button type="button" onClick={()=>handleSubmit()}
                                 className='p-2 duration-500 rounded-xl border border-(--color-royal-blue) hover:bg-(--color-royal-blue) hover:text-white'>
                                 Kirim
                             </button>
@@ -173,7 +245,8 @@ const Feed = () => {
                             <label htmlFor="" className=''>
                                 Pilih siswa
                                 <br />
-                                <select className="p-2 rounded-xl border border-(--color-royal-blue) w-full" id="" onChange={(e) => handleChange0(e)}>
+                                <select className="p-2 rounded-xl border border-(--color-royal-blue) w-full" 
+                                id="siswa_id" onChange={(e) => handleChange0(e)}>
                                     <option value='Pilih' hidden selected>Pilih</option>
                                     {
                                         siswa.map((s) => {
@@ -187,7 +260,8 @@ const Feed = () => {
                             <label htmlFor="" className=''>
                                 Pilih data yang salah
                                 <br />
-                                <select className="p-2 rounded-xl border border-(--color-royal-blue) w-full" id="" onChange={(e) => handleChange1(e)}>
+                                <select className="p-2 rounded-xl border border-(--color-royal-blue) w-full" 
+                                id="collumn_wrong" onChange={(e) => handleChange1(e)}>
                                     <option value='Pilih' hidden selected>Pilih</option>
                                     <option value='nis'>NIS</option>
                                     <option value='nisn'>NISN</option>
@@ -206,9 +280,9 @@ const Feed = () => {
                             <label htmlFor="">
                                 Masukkan data yang benar
                                 <br />
-                                <input type="text" name="" id="" placeholder={dataSelected} className='p-2 rounded-xl border border-(--color-royal-blue) w-full' />
+                                <input type="text" name="" id="data_right" placeholder={dataSelected} className='p-2 rounded-xl border border-(--color-royal-blue) w-full' />
                             </label>
-                            <button type="button"
+                            <button type="button" onClick={()=>handleSubmit()}
                                 className='p-2 duration-500 rounded-xl border border-(--color-royal-blue) hover:bg-(--color-royal-blue) hover:text-white'>
                                 Kirim
                             </button>
@@ -218,7 +292,7 @@ const Feed = () => {
                         <>
                             <label htmlFor="">
                                 Pilih halaman yang kamu ingin beri saran
-                                <select name="" id="" className='p-2 rounded-xl border border-(--color-royal-blue) w-full' onChange={(e) => handleChange3(e)}>
+                                <select name="" id="page_fitur" className='p-2 rounded-xl border border-(--color-royal-blue) w-full capitalize' onChange={(e) => handleChange3(e)}>
                                     <option value="pilih" hidden selected>Pilih</option>
                                     {pages.map((p) => {
                                         return (
@@ -231,11 +305,11 @@ const Feed = () => {
                     )}
                     {selectedFitur && (
                         <>
-                            <span>Fitur seperti apa yang kamu temukan pada halaman {selectedFitur}</span>
-                            <textarea name="" id="" cols="24" rows="8" placeholder='Deskripsikan bug'
+                            <span>Fitur seperti apa yang kamu inginkan pada halaman {selectedFitur}</span>
+                            <textarea name="" id="text_fitur" cols="24" rows="8" placeholder='Deskripsikan bug'
                                 className='p-2 rounded-xl border border-(--color-royal-blue) w-full'></textarea>
 
-                            <button type="button"
+                            <button type="button" onClick={()=>handleSubmit()}
                                 className='p-2 duration-500 rounded-xl border border-(--color-royal-blue) hover:bg-(--color-royal-blue) hover:text-white'>
                                 Kirim
                             </button>

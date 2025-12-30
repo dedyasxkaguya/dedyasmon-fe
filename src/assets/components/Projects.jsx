@@ -169,6 +169,8 @@ const Projects = (props) => {
                                 </div>
                             </div>
                             <span>{a?.data?.pushed_at?.split('T')[0]} at {a?.data?.pushed_at?.split('T')[1].split('Z')[0]}</span>
+                            {/* <span>{a?.created_at}</span> */}
+                            {/* <span>{a?.updated_at}</span> */}
                         </div>
                     )
                 })}

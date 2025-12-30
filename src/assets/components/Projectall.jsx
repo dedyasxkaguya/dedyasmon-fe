@@ -75,7 +75,7 @@ const Projectall = () => {
                             </div>
                             <div className="flex notdiv gap-2">
                                 <div className="projectImgBox">
-                               np     <img src={a?.data?.owner?.avatar_url} alt="" className='projectIconImg aspect-square rounded-xl' />
+                                    <img src={a?.data?.owner?.avatar_url} alt="" className='projectIconImg aspect-square rounded-xl' />
                                 </div>
                                 <div className="flex flex-col notdiv max-w-[60%]">
                                     <span className=''>
@@ -96,7 +96,8 @@ const Projectall = () => {
                                     </a> */}
                                 </div>
                             </div>
-                            <span>{a?.data?.pushed_at?.split('T')[0]} at {a?.data?.pushed_at?.split('T')[1].split('Z')[0]}</span>
+                            {/* <span>{a?.data?.pushed_at?.split('T')[0]} at {a?.data?.pushed_at?.split('T')[1].split('Z')[0]}</span> */}
+                            <span className='mt-2'>{a.created_at}</span>
                         </div>
                     )
                 })}
