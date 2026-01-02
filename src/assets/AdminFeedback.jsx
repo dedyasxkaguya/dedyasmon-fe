@@ -145,7 +145,7 @@ const AdminFeedback = () => {
                                     <div className="p-2 rounded-2xl bg-white font-medium">
                                         <div className="flex gap-2 items-center">
                                             <i
-                                                className="bi bi-database text-3xl bg-(--color-royal-blue) text-white p-2 rounded-xl"></i>
+                                                className="bi bi-database-fill text-3xl bg-(--color-royal-blue) text-white p-2 rounded-xl"></i>
                                             <div className="flex flex-col">
                                                 <h1 className='font-light text-sm'>@{f.user.username} <span className='text-xs'>{f.formatted_date}</span></h1>
                                                 <span>Keluhan Kesalahan Data</span>
@@ -218,7 +218,7 @@ const AdminFeedback = () => {
                                     <div className="p-2 rounded-2xl bg-white font-medium">
                                         <div className="flex gap-2 items-center">
                                             <i
-                                                className="bi bi-database text-3xl bg-(--color-royal-blue) text-white p-2 rounded-xl"></i>
+                                                className="bi bi-database-fill text-3xl bg-(--color-royal-blue) text-white p-2 rounded-xl"></i>
                                             <div className="flex flex-col">
                                                 <h1 className='font-light text-sm'>@{f.user.username} <span className='text-xs'>{f.formatted_date}</span></h1>
                                                 <span>Keluhan Kesalahan Data</span>

@@ -12,6 +12,8 @@ import GalleryPage from './assets/pages/GalleryPage'
 import ProjectPage from './assets/pages/ProjectPage'
 import Categories from './assets/pages/Categories'
 import Feedback from './assets/pages/Feedback'
+import Siswa from './assets/pages/admin/Siswa'
+import EditSiswa from './assets/pages/admin/EditSiswa'
 
 function App() {
 
@@ -28,6 +30,9 @@ function App() {
       <Route path='/:id/projects' element={<ProjectPage/>}></Route>
       <Route path='/:id/feedback' element={<Feedback/>}></Route>
       <Route path='/:id/category/:slug' element={<Categories/>}></Route>
+
+      <Route path='/:id/admin/siswa' element={<Siswa/>}></Route>
+      <Route path='/:id/siswa/edit/:siswa' element={<EditSiswa/>}></Route>
     </Routes>
     </>
   )

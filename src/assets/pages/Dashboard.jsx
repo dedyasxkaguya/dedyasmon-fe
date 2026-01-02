@@ -27,6 +27,7 @@ const Dashboard = () => {
     if (user?.role !== 'SISWA') {
         isSiswa = 'none'
     }
+    let isAdmin = user?.role=='ADMIN' ? true : false
     const handleClick = () => {
         if (!isshow) {
             setLeft('left-0')
@@ -55,6 +56,14 @@ const Dashboard = () => {
                             <Buttons title='Kelas' icon='backpack2' link='/teachers' />
                             <Buttons title='Galeri' icon='images' link='/gallery' />
                         </div>
+                        {isAdmin && (
+                            <div className='flex flex-col gap-2 my-4'>
+                                <span className="font-extralight text-sm">Admin Page</span>
+                                <Buttons title='Siswa' icon='person' link='/admin/siswa' />
+                                <Buttons title='User' icon='person-gear' link='/admin/user' />
+                                <Buttons title='Galeri' icon='images' link='/gallery' />
+                            </div>
+                        )}
                         <div className='flex flex-col gap-2 my-4'>
                             <span className="font-extralight text-sm">Service Support</span>
                             <Link target='_blank'

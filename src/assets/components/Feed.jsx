@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const Feed = () => {
     const { id } = useParams()
@@ -158,10 +159,24 @@ const Feed = () => {
                 'page_fitur': page_fitur,
                 'text_fitur': text_fitur
             })
+            Swal.fire({
+                title:'Wait a second...',
+                text:'Fetching our API',
+                showConfirmButton:false
+            })
             axios.post('http://127.0.0.1:8000/api/feedback/add',formData)
             .then(data=>{
                 const fetched = data.data
                 console.log(fetched)
+                Swal.fire({
+                    icon:'success',
+                    title:'Berhasil',
+                    text:'Terimakasih atas feedback yang kamu berikan !',
+                    showConfirmButton:false
+                })
+                setTimeout(() => {
+                    navigation.reload()
+                }, 2000);
             })
         }
     }
