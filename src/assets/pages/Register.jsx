@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from '../components/Input'
 import bgrpl from '../../../public/bgrpl.jpg'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
+// import React from 'react'
 // import logorpl from '../../../public/rpl.png'
 
 const Register = () => {
+    const [isEmailValidate, setEmailValidate] = useState(true)
+    const [isPasswordValidate, setPasswordValidate] = useState(true)
+    const [isUsernameValidate, setUsernameValidate] = useState(true)
     const handleRegister = () => {
         const formData = new FormData();
 
@@ -79,6 +83,18 @@ const Register = () => {
                     }
 
                 })
+                .finally(a => {
+                    console.log(a)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal',
+                        text: 'Terdapat kesalahan di database, coba hubungi admin',
+                        showConfirmButton: false,
+                        toast: true,
+                        timer:3000,
+                        timerProgressBar:true
+                    })
+                })
         } else {
             Swal.fire({
                 icon: 'warning',
@@ -88,7 +104,20 @@ const Register = () => {
             })
         }
     }
-
+    const handleUsernameChange = (e) => {
+        const email = e.target.value
+        console.log(email.includes('@') || email.includes('.com') || email.includes('.id'))
+        setUsernameValidate(!email.includes(' '))
+    }
+    const handleEmailChange = (e) => {
+        const email = e.target.value
+        console.log(email.includes('@') || email.includes('.com') || email.includes('.id'))
+        setEmailValidate(email.includes('@') || email.includes('.com') || email.includes('.id'))
+    }
+    const handlePasswordChange = (e) => {
+        const len = e.target.value.length
+        setPasswordValidate(len >= 8 ? true : false)
+    }
     return (
         <main className='h-dvh flex font-["Raleway"] flex-row-reverse'>
             <div id="left0" className='h-dvh w-[60dvw] bg-(--color-royal-blue) flex justify-center items-center fixed'>
@@ -107,9 +136,33 @@ const Register = () => {
                     <span className='text-sm font-light'>You need an account to access Dedyasmon</span>
                     <br />
                     <div className="flex flex-col gap-4">
-                        <Input id='name' type="text" name='Username' />
-                        <Input id='email' type="email" name='Email' />
-                        <Input id='password' type="password" name='Password' />
+                        <div className="flex flex-col gap-2">
+                            <Input id='name' type="text" name='Username' func={(e)=>handleUsernameChange(e)} />
+                            {!isUsernameValidate && (
+                                <span className='text-xs font-light text-red-500 mx-2'>
+                                    <i className='bi bi-exclamation-circle me-2'></i>
+                                    Username tidak boleh memiliki spasi
+                                </span>
+                            )}
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <Input id='email' type="email" name='Email' func={(e)=>handleEmailChange(e)}/>
+                            {!isEmailValidate && (
+                                <span className='text-xs font-light text-red-500 mx-2'>
+                                    <i className='bi bi-exclamation-circle me-2'></i>
+                                    Pastikan email sesuai
+                                </span>
+                            )}
+                        </div>
+                        <div className="flex flex-col gap-2">
+                            <Input id='password' type="password" name='Password' func={(e)=>handlePasswordChange(e)}/>
+                            {!isPasswordValidate && (
+                               <span className='text-xs font-light text-red-500 mx-2'>
+                                    <i className='bi bi-exclamation-circle me-2'></i>
+                                    Password harus memiliki 8 karakter
+                                </span> 
+                            )}
+                        </div>
                         <Link to={'/'} className='text-sm underline'>Already have an account</Link>
                         <button type="button" id='btn'
                             className='p-2 rounded-xl border duration-500 border-neutral-50 hover:bg-neutral-50 hover:text-neutral-800'

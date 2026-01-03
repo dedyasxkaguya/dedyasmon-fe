@@ -145,6 +145,7 @@ body {
     #right0,
     #right {
         width: 100dvw !important;
+        top: 0;
     }
     
     #left0,
